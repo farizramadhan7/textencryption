@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Encryption & DTMF Decryption</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <nav class="bg-white shadow-md p-4 fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="./assets/img/polban.png" alt="Logo" class="w-9 h-10">
+                <a href="#" class="text-xl font-bold text-gray-800">TA Sanjif</a>
+            </div>
+            
+            <!-- Tombol Hamburger -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <!-- Menu Navbar -->
+            <ul id="nav-links" class="hidden md:flex space-x-6 text-gray-800">
+                <li><a href="#" class="hover:text-gray-500">Home</a></li>
+                <li><a href="#" class="hover:text-gray-500">About</a></li>
+                <li><a href="#" class="hover:text-gray-500">Services</a></li>
+                <li><a href="#" class="hover:text-gray-500">Contact</a></li>
+            </ul>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white p-4 shadow-md">
+            <ul class="text-gray-800">
+                <li><a href="#" class="block py-2 hover:text-gray-500">Home</a></li>
+                <li><a href="#" class="block py-2 hover:text-gray-500">About</a></li>
+                <li><a href="#" class="block py-2 hover:text-gray-500">Services</a></li>
+                <li><a href="#" class="block py-2 hover:text-gray-500">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="container mx-auto mt-20 p-4">
+        <h2 class="text-2xl font-bold text-center mb-6">Text Encryption and DTMF Signal Decryption</h2>
+
+        <!-- Form -->
+        <div class="bg-white shadow-md p-6 rounded-lg">
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Encryption Form -->
+                <div>
+                    <label class="block font-semibold">Plaintext :</label>
+                    <input type="text" class="w-full p-2 border rounded mb-2">
+                    
+                    <label class="block font-semibold">Key :</label>
+                    <input type="text" class="w-full p-2 border rounded mb-2">
+                    
+                    <button class="bg-green-500 text-white px-4 py-2 rounded mt-2">Encrypt</button>
+                    
+                    <label class="block font-semibold mt-4">Ciphertext :</label>
+                    <input type="text" class="w-full p-2 border rounded" disabled>
+                </div>
+
+                <!-- Decryption Form -->
+                <div>
+                    <label class="block font-semibold">Ciphertext :</label>
+                    <input type="text" class="w-full p-2 border rounded mb-2">
+                    
+                    <button class="bg-green-500 text-white px-4 py-2 rounded mt-2">Convert</button>
+                    
+                    <label class="block font-semibold mt-4">ASCII Desimal :</label>
+                    <input type="text" class="w-full p-2 border rounded" disabled>
+                </div>
+            </div>
+
+            <!-- DTMF Section -->
+            <div class="mt-6">
+                <h3 class="text-lg font-semibold">Generate DTMF Signal</h3>
+                <input type="text" class="w-full p-2 border rounded mb-2">
+                <button class="bg-green-500 text-white px-4 py-2 rounded">Generate</button>
+            </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+            <img src="./assets/img/dtmf frequencies in frequency domain.png" alt="Image 1" class="w-full h-full object-fit rounded-lg shadow-md">
+            <img src="./assets/img/dtmf frequencies in time domain.png" alt="Image 2" class="w-full h-full object-fit rounded-lg shadow-md">
+            <img src="./assets/img/frequency spectrum.png" alt="Image 3" class="w-full h-full object-fit rounded-lg shadow-md">
+            <img src="./assets/img/waveform time domain.png" alt="Image 4" class="w-full h-full object-fitrounded-lg shadow-md">
+        </div>
+
+        <div class="bg-white shadow-md p-6 rounded-lg">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block font-semibold">Import File (.wav / .mp3):</label>
+                    <input type="file" class="w-full p-2 border rounded mb-2">
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 mt-4">
+                <div>
+                    <label class="block font-semibold">Ciphertext :</label>
+                    <input type="text" class="w-full p-2 border rounded mb-2">
+                    
+                    <label class="block font-semibold">Key :</label>
+                    <input type="text" class="w-full p-2 border rounded mb-2">
+                    
+                    <button class="bg-green-500 text-white px-4 py-2 rounded mt-2">Decrypt</button>
+                </div>
+                
+                <div>
+                    <label class="block font-semibold">Plaintext :</label>
+                    <input type="text" class="w-full p-2 border rounded" disabled>
+                </div>
+            </div>
+    </div>
+    
+    <footer class="bg-white text-black border-t text-center p-4 mt-8 shadow-md">
+        <p>&copy; 2025 Sanjif. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
